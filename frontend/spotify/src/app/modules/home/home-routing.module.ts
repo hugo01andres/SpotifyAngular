@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: 'favorites',
-    loadChildren: () => import('./../favorites/favorites.module').then(m => m.FavoritesModule)
+    loadChildren: () => import('@modules/favorites/favorites.module').then(m => m.FavoritesModule),
   },
   {
     path: 'history',
