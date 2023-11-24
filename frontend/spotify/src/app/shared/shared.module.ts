@@ -10,6 +10,8 @@ import { PlayListBodyComponent } from './components/play-list-body/play-list-bod
 import { RouterModule } from '@angular/router';
 import { OrderListPipe } from './pipes/order-list.pipe';
 import { ImgBrokenDirective } from './directives/img-broken.directive';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MultimediaService } from './services/multimedia.service';
 
 
 
@@ -23,7 +25,8 @@ import { ImgBrokenDirective } from './directives/img-broken.directive';
     PlayListHeaderComponent,
     PlayListBodyComponent,
     OrderListPipe,
-    ImgBrokenDirective
+    ImgBrokenDirective,
+    
   ],
   imports: [
     CommonModule,
