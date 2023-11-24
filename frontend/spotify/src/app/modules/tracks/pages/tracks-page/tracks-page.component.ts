@@ -22,6 +22,7 @@ export class TracksPageComponent implements OnInit, OnDestroy{
     const observer1$ = this.trackService.dataTracksTrending$
     .subscribe(response => {
       this.tracksTrending = response
+      this.tracksRandom = response
       console.log('response', response)
     })
 
