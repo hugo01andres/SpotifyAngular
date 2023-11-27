@@ -3,10 +3,14 @@ import { TrackModel } from '@core/models/tracks.model';
 import { Observable, of } from 'rxjs';
 import * as dataRaw from '../../../data/tracks.json'
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class TrackService {
+
+  private readonly URL = environment.api;
+
 
 
   constructor(private httpClient: HttpClient) { 
@@ -14,7 +18,6 @@ export class TrackService {
   }
 
   getAllTracks$(): Observable<Array<TrackModel>> {
-    const data = (dataRaw as any).default
-    return of(data)
+    return this.httpClient.get<Array<TrackModel>>(`${this.URL}/tracks`)
   }
 }
