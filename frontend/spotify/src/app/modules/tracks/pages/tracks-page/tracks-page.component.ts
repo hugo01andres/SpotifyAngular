@@ -19,7 +19,7 @@ export class TracksPageComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.trackService.getAllTracks$()
-    .subscribe(response => {
+    .subscribe((response: TrackModel[]) => {
       console.log(response)
     })
 
