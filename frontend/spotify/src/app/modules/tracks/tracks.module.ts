@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { TracksRoutingModule } from './tracks-routing.module';
 import { TracksPageComponent } from './pages/tracks-page/tracks-page.component';
 import { SharedModule } from '@shared/shared.module';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,7 +13,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [
     CommonModule,
     TracksRoutingModule,
-    HttpClientModule,
     SharedModule
   ]
 })

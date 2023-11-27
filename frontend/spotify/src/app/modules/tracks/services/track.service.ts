@@ -17,7 +17,7 @@ export class TrackService {
     
   }
 
-  getAllTracks$(): Observable<Array<TrackModel>> {
-    return this.httpClient.get<Array<TrackModel>>(`${this.URL}/tracks`)
+  getAllTracks$(): Observable<any> {
+    return this.httpClient.get(`${this.URL}/tracks`)
   }
 }
