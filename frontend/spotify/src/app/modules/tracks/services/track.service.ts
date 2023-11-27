@@ -23,4 +23,14 @@ export class TrackService {
       })
     )
   }
+
+  getAllRandom$(): Observable<any> {
+    return this.httpClient.get(`${this.URL}/tracks`)
+    .pipe(
+      map((dataRaw:any) => {
+        return dataRaw.data
+      })
+    )
+  }
+
 }
