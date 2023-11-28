@@ -21,16 +21,20 @@ export class LoginPageComponent implements OnInit{
 
     }
 
-    sendLogin(): void{
-      const {email, password} = this.formLogin.value;
+    sendLogin(): void {
+      const { email, password } = this.formLogin.value;
       this._authService.sendCredentials(email, password)
-      .subscribe(responseOk =>{ // Cuando el email y password es correcto
-        console.log('responseOk:', JSON.stringify(responseOk, null, 2));
-        
-      },
-      (error) =>{ // Cuando el email y password es incorrecto
-        console.log(`Error no se puede iniciar sesion: ${error.status}`);
-        this.errorSesion = true;
-      })
+        .subscribe(
+          (responseOk: any) => { // Cuando el email y password es correcto
+            
+            const {tokenSession, data} = responseOk.data;
+            this.cookie.set('token', tokenSession);
+            console.log(responseOk);
+          },
+          (error) => { // Cuando el email y password es incorrecto
+            console.log(`Error no se puede iniciar sesion: ${error.status}`);
+            this.errorSesion = true;
+          }
+        );
     }
 }
