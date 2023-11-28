@@ -27,9 +27,11 @@ export class LoginPageComponent implements OnInit{
         .subscribe(
           (responseOk: any) => { // Cuando el email y password es correcto
             
-            const {tokenSession, data} = responseOk.data;
-            this.cookie.set('token', tokenSession);
+            const {tokenSession, data} = responseOk;
+            this.cookie.set('token', tokenSession, 4, '/');
             console.log(responseOk);
+            console.log(`Bienvenido ${data.name}`);
+            
           },
           (error) => { // Cuando el email y password es incorrecto
             console.log(`Error no se puede iniciar sesion: ${error.status}`);
