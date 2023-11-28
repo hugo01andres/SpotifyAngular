@@ -19,7 +19,7 @@
             <div class="form-steps">
                 <a class="link" href="">¿Se te ha olvidado la contraseña?</a>
             </div>
-            <div *ngIf="true">
+            <div style="color: red;" *ngIf="errorSesion">
                 Ocurrio un error con tu email o password
             </div>
             <div class="form-action">
@@ -27,7 +27,5 @@
             </div>
         </form>
     </div>
-    <div>
-        <hr>Raw: {{ formLogin.value | json }}
-    </div>
+
 </div>
