@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
   
-  mockCover!: TrackModel;
+
   listObservers$: Array<Subscription> = [];
 
   constructor(public multimediaService: MultimediaService) { }
@@ -18,9 +18,6 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    this.multimediaService.trackInfo$.subscribe( res =>{
-      console.log('Reproducir:');
-    })
     
   }
 
