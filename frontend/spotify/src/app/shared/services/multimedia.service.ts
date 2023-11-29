@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 export class MultimediaService {
   callback: EventEmitter<any> = new EventEmitter();
 
-  myObservable1$: Observable<any> = new Observable();
+  public trackInfo$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
+  public audio : HTMLAudioElement = new Audio();
   constructor() { }
 }
