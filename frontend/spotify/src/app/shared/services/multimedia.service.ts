@@ -10,6 +10,7 @@ export class MultimediaService {
 
   public trackInfo$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
   public audio : HTMLAudioElement = new Audio();
+  public timeElapsed$ : BehaviorSubject<string> = new BehaviorSubject<string>('00:00');
   constructor() {
     this.audio = new Audio();
     this.trackInfo$.subscribe((responseOk) => {
@@ -37,7 +38,13 @@ export class MultimediaService {
     // 5.1, 8.2
     let seconds = Math.floor(time % 60);
     let minutes = Math.floor(time / 60) % 60;
-   }
+
+    const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds;
+    const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
+
+    const elapsedTime = `${displayMinutes}:${displaySeconds}`;
+    this.timeElapsed$.next(elapsedTime);
+  }
 
   public setAudio(track: TrackModel) : void
   {
