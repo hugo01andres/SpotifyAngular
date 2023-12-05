@@ -31,8 +31,12 @@ export class MultimediaService {
      console.log('Disparando evento');
      const {duration, currentTime} = this.audio;
      console.table([duration, currentTime]);
-     
-     
+     this.setTimeElapsed(currentTime);
+   }
+   private setTimeElapsed(time: number): void{
+    // 5.1, 8.2
+    let seconds = Math.floor(time % 60);
+    let minutes = Math.floor(time / 60) % 60;
    }
 
   public setAudio(track: TrackModel) : void
