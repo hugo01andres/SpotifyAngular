@@ -19,10 +19,20 @@ export class MultimediaService {
       }
     }
     );
+    this.listenAllEvents();
    }
 
    public listenAllEvents(): void{
+      this.audio.addEventListener('timeupdate',this.calculateTime, false)
 
+   }
+
+   private calculateTime = () =>{
+     console.log('Disparando evento');
+     const {duration, currentTime} = this.audio;
+     console.table([duration, currentTime]);
+     
+     
    }
 
   public setAudio(track: TrackModel) : void
@@ -30,4 +40,6 @@ export class MultimediaService {
       this.audio.src = track.url;
       this.audio.play();
   }
+
+
 }
