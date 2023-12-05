@@ -11,6 +11,7 @@ export class MultimediaService {
   public trackInfo$: BehaviorSubject<any> = new BehaviorSubject<any>(undefined);
   public audio : HTMLAudioElement = new Audio();
   public timeElapsed$ : BehaviorSubject<string> = new BehaviorSubject<string>('00:00');
+  public timeRemaining$ : BehaviorSubject<string> = new BehaviorSubject<string>('00:00');
   constructor() {
     this.audio = new Audio();
     this.trackInfo$.subscribe((responseOk) => {
@@ -33,6 +34,7 @@ export class MultimediaService {
      const {duration, currentTime} = this.audio;
      console.table([duration, currentTime]);
      this.setTimeElapsed(currentTime);
+     this.setTimeRemaining(currentTime, duration);
    }
    private setTimeElapsed(time: number): void{
     // 5.1, 8.2
@@ -44,6 +46,20 @@ export class MultimediaService {
 
     const elapsedTime = `${displayMinutes}:${displaySeconds}`;
     this.timeElapsed$.next(elapsedTime);
+  }
+
+  private setTimeRemaining(time: number, duration: number): void{
+    // 5.1, 8.2
+    let timeLeft = duration - time;
+    let seconds = Math.floor(timeLeft % 60);
+    let minutes = Math.floor(timeLeft / 60) % 60;
+
+    const displaySeconds = (seconds < 10) ? `0${seconds}` : seconds;
+    const displayMinutes = (minutes < 10) ? `0${minutes}` : minutes;
+
+    const remainingTime = `-${displayMinutes}:${displaySeconds}`;
+
+    this.timeRemaining$.next(remainingTime);
   }
 
   public setAudio(track: TrackModel) : void

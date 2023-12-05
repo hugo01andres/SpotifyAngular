@@ -54,7 +54,7 @@
                 <span class="time-progress-live" [style.width]="10+'%'">
                 </span>
             </span>
-            <div class="time">{{99}}</div>
+            <div class="time">{{multimediaService.timeRemaining$ | async}}</div>
         </div>
     </div>
 </ng-template>
