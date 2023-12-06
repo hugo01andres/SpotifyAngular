@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { TrackModel } from '@core/models/tracks.model';
 import { MultimediaService } from '@shared/services/multimedia.service';
 import { Subscription } from 'rxjs';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   styleUrl: './media-player.component.css'
 })
 export class MediaPlayerComponent implements OnInit, OnDestroy {
-  
+  @ViewChild('progressBar') progressBar: ElementRef = new ElementRef('');
 
   listObservers$: Array<Subscription> = [];
   state: string = 'paused'
@@ -25,6 +25,13 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
     });
 
     this.listObservers$ = [observer1$];
+    
+  }
+  handlePosition(event: MouseEvent): void {
+    const elNative: HTMLElement = this.progressBar.nativeElement;
+    const {clientX} = event;
+    
+    console.log('->',event);
     
   }
 
