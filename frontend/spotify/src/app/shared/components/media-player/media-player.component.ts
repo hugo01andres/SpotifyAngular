@@ -30,8 +30,11 @@ export class MediaPlayerComponent implements OnInit, OnDestroy {
   handlePosition(event: MouseEvent): void {
     const elNative: HTMLElement = this.progressBar.nativeElement;
     const {clientX} = event;
-    
-    console.log('->',event);
+    const {x, width} = elNative.getBoundingClientRect();
+    const clickX = clientX - x;
+    const percentageFromX = (clickX * 100) / width;
+    console.log(`Click en ${clientX} de ${x} a ${width}`);
+    this.multimediaService.seekAudio(percentageFromX);
     
   }
 

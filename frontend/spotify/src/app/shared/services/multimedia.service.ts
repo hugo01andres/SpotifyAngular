@@ -105,5 +105,10 @@ export class MultimediaService {
       this.audio.play();
   }
 
+  public seekAudio(percentage: number): void{
+    const {duration} = this.audio;
+    this.audio.currentTime = (percentage * duration) / 100;
+  }
+
 
 }
